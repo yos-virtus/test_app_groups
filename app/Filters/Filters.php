@@ -24,7 +24,7 @@ abstract class Filters
     protected $filters = [];
 
     /**
-     * Create a new ThreadFilters instance.
+     * Create a new instance.
      *
      * @param Request $request
      */
