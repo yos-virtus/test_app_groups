@@ -11,16 +11,6 @@ use Tests\TestCase;
 class GroupUpdateTest extends TestCase
 {
 	use RefreshDatabase;
-	
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
 
     /**
      * Test if group's users list can be updated
