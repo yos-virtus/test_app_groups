@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class CreateUserTest extends TestCase
 {
-	 use RefreshDatabase;
+	use RefreshDatabase;
 
     /**
      * Test if one can create a user who is included in a group
@@ -54,27 +54,5 @@ class CreateUserTest extends TestCase
 
         $responseExists->assertStatus(200);
         $responseNonExistent->assertStatus(404);
-    }
-
-    /**
-     * Test if users exists and active
-     *
-     * @return void
-     */
-    public function testListOfUsersInAGroupCanBeModified()
-    {
-        $group = factory(Group::class)->create();
-        $users = factory(User::class, 3)->create();
-
-        $responseExistingUsersIds = $this->json('PUT', 'api/groups/' . $group->id, [
-        	'user_ids' => [1, 2, 3]
-        ]);
-
-        $responseWithNonExistentUserIds = $this->json('PUT', 'api/groups/' . $group->id, [
-        	'user_ids' => [1, 2, 3, 4, 5]
-        ]);
-
-        $responseExistingUsersIds->assertStatus(200);
-        $responseWithNonExistentUserIds->assertStatus(422);
     }
 }
